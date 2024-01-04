@@ -1,4 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:share/share.dart';
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:markdown_editable_textinput/format_markdown.dart';
 import 'package:markdown_editable_textinput/markdown_text_input.dart';
@@ -84,19 +90,26 @@ class _EditorScreenState extends State<EditorScreen> {
     );
   }
 
-  void _saveMarkdown() {
-    // Implemente a lógica para salvar o texto em Markdown (semelhante ao exemplo anterior).
-    // Substitua o trecho de código abaixo com a lógica de salvamento personalizada.
-    // final directory = await getApplicationDocumentsDirectory();
-    // final file = File('${directory.path}/markdown_file.md');
-    // await file.writeAsString(controller.text);
-    // Get.snackbar("Salvo com sucesso", "O arquivo foi salvo como markdown_file.md");
+  void _saveMarkdown() async {
+    try {
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File('${directory.path}/markdown_file.md');
+
+      await file.writeAsString(markdownText);
+      Get.snackbar(
+        "Salvo com sucesso",
+        "O arquivo foi salvo como markdown_file.md",
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        print("Erro ao salvar o arquivo: $e");
+      }
+      Get.snackbar("Erro", "Não foi possível salvar o arquivo.");
+    }
   }
 
   void _shareMarkdown() {
-    // Implemente a lógica para compartilhar o texto em Markdown (semelhante ao exemplo anterior).
-    // Substitua o trecho de código abaixo com a lógica de compartilhamento personalizada.
-    // final text = controller.text;
-    // Get.snackbar("Compartilhar", "Texto copiado para a área de transferência:\n$text");
+    final text = markdownText;
+    Share.share(text, subject: 'Compartilhando Markdown');
   }
 }
