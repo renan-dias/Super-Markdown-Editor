@@ -52,7 +52,8 @@ class HomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final templates = useProvider(templatesProvider);
-    final selectedTemplate = useProvider(selectedTemplateProvider);
+    final selectedTemplate =
+        useProvider(selectedTemplateProvider as Provider<List<String>>);
 
     return Scaffold(
       body: Column(
@@ -92,7 +93,8 @@ class HomeScreen extends HookWidget {
     );
   }
 
-  Widget _buildTemplatesSection(List<String> templates, StateController<String> selectedTemplate) {
+  Widget _buildTemplatesSection(
+      List<String> templates, StateController<String> selectedTemplate) {
     return Expanded(
       child: ListView(
         children: templates.map((template) {
@@ -120,3 +122,5 @@ class HomeScreen extends HookWidget {
     );
   }
 }
+
+useProvider(Provider<List<String>> templatesProvider) {}
