@@ -9,7 +9,9 @@ Super Markdown Editor é um aplicativo Flutter/Dart que oferece uma experiência
 - [x] Idealização do Projeto
 - [x] Definição de Escopo
 - [x] Organização Inicial do Projeto e Ambiente
-- [ ] Implementação da Tela Principal
+- [ ] Tela Principal
+    - [x] Implementação da estrutura inicial
+    - [ ] Desenvolvimento do design
 - [ ] Desenvolvimento da Tela de Edição
 - [ ] Adição de Templates na Tela Principal
 - [ ] Aprimoramento da Interface do Editor

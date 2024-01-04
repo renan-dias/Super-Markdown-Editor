@@ -3,10 +3,6 @@ import 'package:get/get.dart';
 import 'screens/home_screen.dart';
 import 'screens/editor.dart';
 
-void main() {
-  runApp(MyApp());pubspec.yaml
-}
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
